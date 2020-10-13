@@ -1,0 +1,107 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div id="Category"  data-target-group="idForm">
+                <div id="content" class="site-content bg-punch-light space-bottom-3">
+                    <div class="col-full container">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <article id="post-6" class="post-6 page type-page status-publish hentry">
+                                    <!-- .entry-header -->
+                                    <div class="entry-content">
+                                        <div class="woocommerce">  
+    <!-- End Title -->
+    <form [formGroup]="createUserForm" (submit)=onSubmit(createUserForm)>
+    <div class="p-4 p-md-6">
+        <!-- Form Group -->
+
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <input formControlName="ID" type="hidden" id="ID" name="ID">
+                <label class="form-label" for="firstName" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }">First Name *</label>
+                <input class="form-control rounded-0 height-4 px-4" formControlName="firstName" name="firstName" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }"  aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.firstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="lastName">Last Name *</label>
+                <input class="form-control rounded-0 height-4 px-4" formControlName="lastName" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" name="lastName" id="lastName" placeholder="Last Name" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.lastName.errors.required">Last Name is required</div>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="gender">Gender *</label>
+                <input class="form-control rounded-0 height-4 px-4" formControlName="gender" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }" name="gender" id="gender" placeholder="Gender" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.gender.errors" class="invalid-feedback">
+                    <div *ngIf="f.gender.errors.required">Gender is required</div>
+                </div>
+            </div>
+        </div> -->
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="mobileNo">Phone No *</label>
+                <input class="form-control rounded-0 height-4 px-4" name="mobileNo" formControlName="mobileNo" [ngClass]="{ 'is-invalid': submitted && f.mobileNo.errors }" id="mobileNo" placeholder="Phone No" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.mobileNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.mobileNo.errors.required">Mobile No is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="emailId">Email *</label>
+                <input class="form-control rounded-0 height-4 px-4" name="emailId" formControlName="emailId" [ngClass]="{ 'is-invalid': submitted && f.emailId.errors }"  id="emailId" placeholder="EmailId" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.emailId.errors" class="invalid-feedback">
+                    <div *ngIf="f.emailId.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="UserName">UserName *</label>
+                <input class="form-control rounded-0 height-4 px-4" name="UserName" formControlName="UserName" [ngClass]="{ 'is-invalid': submitted && f.UserName.errors }"  id="UserName" placeholder="UserName" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.UserName.errors" class="invalid-feedback">
+                    <div *ngIf="f.UserName.errors.email">UserName is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="Password">Password *</label>
+                <input type="password" class="form-control rounded-0 height-4 px-4" name="Password" formControlName="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"  id="Password" placeholder="Password" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
+                    <div *ngIf="f.Password.errors.email">Password is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row place-order">
+            <div class="col-md-4"></div>
+            <div class="col-md-2"> <button type="submit" class="btn btn-primary">Submit</button></div>
+            <div class = "col-md-2"><button type="button" (click)="Cancel()" class="btn btn-primary">Cancel</button></div>
+            <div class="col-md-4"></div>
+          </div>
+        
+    </div>
+    </form></div>
+</div>
+<!-- .entry-content -->
+</article>
+<!-- #post-## -->
+</main>
+<!-- #main -->
+</div>
+<!-- #primary -->
+</div>
+<!-- .col-full -->
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- End Signup -->

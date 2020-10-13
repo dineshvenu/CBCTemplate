@@ -1,0 +1,59 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div id="Category"  data-target-group="idForm">
+                <div id="content" class="site-content bg-punch-light space-bottom-3">
+                    <div class="col-full container">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <article id="post-6" class="post-6 page type-page status-publish hentry">
+                                    <!-- .entry-header -->
+                                    <div class="entry-content">
+                                        <div class="woocommerce">                        
+                
+                                            <form [formGroup]="createPublisherForm" (submit)=onSubmit(createPublisherForm)>
+                                                <div class="" id="customer_details">
+                                                    <div class="px-4 pt-5 bg-white border">
+                                                        <div class="woocommerce-billing-fields">                
+                                                            <h3 class="mb-4 font-size-3">Publisher </h3>
+                
+                                                            <div class="woocommerce-billing-fields__field-wrapper row">
+                                                               
+                                                                <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">  
+                                                                    <input formControlName="PblisherID" type="hidden" id="PblisherID" name="PblisherID">
+                                                                </p>
+                                                               
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="PublisherName" class="form-label">Publisher Name <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="PublisherName" [ngClass]="{ 'is-invalid': submitted && f.PublisherName.errors }" type="text" class="input-text form-control" name="PublisherName" id="PublisherName" placeholder="Publisher Name" value=""/>    
+                                                                    <div *ngIf="submitted && f.PublisherName.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.PublisherName.errors.required">Course Name is required</div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row place-order">
+                                                                <div class="col-md-4"></div>
+                                                                <div class="col-md-2"> <button type="submit" class="btn btn-primary">Submit</button></div>
+                                                                <div class = "col-md-2"><button type="button" (click)="Cancel()" class="btn btn-primary">Cancel</button></div>
+                                                                <div class="col-md-4"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                            </main>
+                            <!-- #main -->
+                        </div>
+                        <!-- #primary -->
+                    </div>
+                    <!-- .col-full -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

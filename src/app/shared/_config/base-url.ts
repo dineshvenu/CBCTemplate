@@ -1,0 +1,1 @@
+export let BaseAppUrl = 'https://localhost:44385/api';

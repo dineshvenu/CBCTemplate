@@ -1,0 +1,197 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div id="Category"  data-target-group="idForm">
+                <div id="content" class="site-content bg-punch-light space-bottom-3">
+                    <div class="col-full container">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <article id="post-6" class="post-6 page type-page status-publish hentry">
+                                    <!-- .entry-header -->
+                                    <div class="entry-content">
+                                        <div class="woocommerce">                        
+                
+                                            <form [formGroup]="createPurchaseForm" (submit)=onSubmit(createPurchaseForm)>
+                                                <div class="" id="customer_details">
+                                                    <div class="px-4 pt-5 bg-white border">
+                                                        <div class="woocommerce-billing-fields">                
+                                                            <h3 class="mb-4 font-size-3">Sales </h3>
+                
+                                                            <div class="woocommerce-billing-fields__field-wrapper row">
+                                                               
+                                                                <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">  
+                                                                    <input formControlName="ID" type="hidden" id="ID" name="ID">
+                                                                </p>
+                                                               
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="PuchaseNo" class="form-label">Puchase No </label>
+                                                                    <input formControlName="PuchaseNo"  type="text" disabled class="input-text form-control" name="PuchaseNo" id="PuchaseNo" placeholder="Puchase No" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="SupplierID" class="form-label">Supplier </label>
+                                                                    <select  class="form-control" formControlName="SupplierID" [(ngModel)]="SelSupplierId">
+                                                                        <option  value="">Select Supplier</option>
+                                                                        <option *ngFor="let Supplier of SupplierList | async" value={{Supplier.ID}}>
+                                                                            {{Supplier.Name}}
+                                                                        </option>                                                                   
+                                                                    </select>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="PurchaseDate" class="form-label">Purchase Date </label>
+                                                                    <mat-form-field   class="datpickerbackgrounf" color="accent" appearance="fill">
+                                                                        <mat-label > Purchase Duty  </mat-label>
+                                                                        <input formControlName="PurchaseDate" [(ngModel)]="DODDate" matInput [matDatepicker]="PurchaseDate" >
+                                                                        <mat-datepicker-toggle matSuffix  [for]="PurchaseDate"  class="datpickerSelecter"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #PurchaseDate color="primary"></mat-datepicker>
+                                                                      </mat-form-field>  
+                                                                   
+                                                                </div>                                                             
+                                                                    
+                                                                    <div  class="col-12 mb-3 form-row form-row-wide address-field validate-required">
+                                                                        <ng-container formArrayName="purchaseDtlModels" >
+                                                           
+                                                            <div class="example-container mat-elevation-z8" style="width: 100%;">
+
+                                                            <mat-table #table [dataSource]="dataSource" style="width: 100%;">
+                                                                <ng-container style="width: 700px;" matColumnDef="PurchaseDetailsID">
+                                                                    <mat-header-cell fxHide   fxFlex="300" fxFlex.gt-xs="150" fxFlex.gt-sm="200"
+                                                                    fxFlex.gt-md="250" fxLayout="row" fxLayoutAlign="center center" *matHeaderCellDef> ID </mat-header-cell>
+                                                                    <mat-cell fxHide fxFlex="300" fxFlex.gt-xs="150" fxFlex.gt-sm="200" fxFlex.gt-md="250"  fxFlex="600px" *matCellDef="let element let index = index" [formGroupName]="index"> {{element.PurchaseDetailsID}} </mat-cell>
+                                                                </ng-container>
+
+                                                                <ng-container matColumnDef="Stock">
+                                                                    <mat-header-cell   fxFlex="300" fxFlex.gt-xs="150" fxFlex.gt-sm="200"
+                                                                    fxFlex.gt-md="250" fxLayout="row"  *matHeaderCellDef> Product </mat-header-cell>
+                                                                    <mat-cell fxFlex="300" fxFlex.gt-xs="150" fxFlex.gt-sm="200" fxFlex.gt-md="250"  *matCellDef="let element; let index = index" [formGroupName]="index">
+                                                                        <input type="text"
+                                                                        (input)="itemClassOnChange($event.target.value)"
+                                                                        (change)="addElement()"
+                                                                        placeholder="Pick one"
+                                                                        aria-label="Number"
+                                                                        matInput
+                                                                        formControlName="Stock"
+                                                                        [matAutocomplete]="auto">
+                                                                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onStochange(index)">
+                                                                   <mat-option  *ngFor="let stock of StockList | async" [value]="stock">
+                                                                    {{stock.Name}}
+                                                                   </mat-option>
+                                                                 </mat-autocomplete>
+                                                                 
+                                                                    </mat-cell>
+                                                                </ng-container>
+                                                               
+                                                                    <ng-container matColumnDef="UnitID">
+                                                                        <mat-header-cell *matHeaderCellDef> Unit </mat-header-cell>
+                                                                        <mat-cell *matCellDef="let element let index = index" [formGroupName]="index">
+                                                                            <mat-form-field>
+                                                                                <mat-select (selectionChange)="getTotalAmtonUnitSelect($event,index);" style="width: 100px; color: red;" formControlName="UnitID" >
+                                                                                  <mat-option *ngFor="let Unit of UnitList | async" [value]="Unit.ID">
+                                                                                    {{ Unit.Name }}
+                                                                                  </mat-option>
+                                                                                </mat-select>
+                                                                              </mat-form-field>                                                                            
+                                                                         </mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="Relation">
+                                                                            <mat-header-cell *matHeaderCellDef> Relation </mat-header-cell>
+                                                                                <mat-cell  *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.Relation}} </mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="TotalQty">
+                                                                            <mat-header-cell *matHeaderCellDef> TotalQty </mat-header-cell>
+                                                                                <mat-cell  *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.TotalQty}} </mat-cell>
+                                                                        </ng-container>
+                                                                        <ng-container matColumnDef="ItemPrice">
+                                                                            <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                                                                                <mat-cell  *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.ItemPrice}} </mat-cell>
+                                                                        </ng-container>
+                                                                <ng-container matColumnDef="PurchaseQty">
+                                                                    <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                                                                        <mat-form-field floatLabel="never">
+                                                                            <input style="width: 100px !important;" (keydown.enter)="onKeydown($event)"  (change)="onQtySelected(index)" matInput placeholder="PurchaseQty" [value]="element.PurchaseQty" formControlName="PurchaseQty">
+                                                                        </mat-form-field>
+                                                                    </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="TotalAmt">
+                                                                    <mat-header-cell *matHeaderCellDef> Total Amt </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.TotalAmt}} </mat-cell>
+                                                                    </ng-container>
+                                                               
+                                                                <ng-container matColumnDef="Discount">
+                                                                <mat-header-cell *matHeaderCellDef> Discount </mat-header-cell>
+                                                                <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"> 
+                                                                    <mat-form-field floatLabel="never">
+                                                                        <input  (change)="onDiscountChanged(index)" matInput placeholder="Discount" [value]="element.Discount" formControlName="Discount">
+                                                                    </mat-form-field>
+                                                                </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="PurchasedAmt">
+                                                                    <mat-header-cell *matHeaderCellDef> Purchased Amt </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"> 
+                                                                        {{element.PurchasedAmt}} </mat-cell>
+                                                                    </ng-container>
+                                                                    <ng-container matColumnDef="StockID">
+                                                                        <mat-header-cell *matHeaderCellDef> StockID </mat-header-cell>
+                                                                        <mat-cell *matCellDef="let element let index = index" [formGroupName]="index"> {{element.StockID}} </mat-cell>
+                                                                        </ng-container>
+                                                                    
+                                                                <ng-container matColumnDef="Add">
+                                                                    <th mat-header-cell *matHeaderCellDef> Add </th>
+                                                                    <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" (click)="addElement()" type="button">Add</button> </td>
+                                                                  </ng-container>
+                                                                  <ng-container matColumnDef="Delete">
+                                                                    <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                                                    <td mat-cell *matCellDef="let element ; let index = index"> <button mat-raised-button color="primary" type="button" (click)="deleteElement(index)">Delete</button> </td>
+                                                                  </ng-container>
+
+                                                                <mat-header-row *matHeaderRowDef="displayedColumns" ></mat-header-row>
+                                                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                                            </mat-table>
+                                                            </div>
+                                                        </ng-container>
+                                                        </div>
+                                                        
+                                                        <div class="col-4 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                            <label for="PurchasedAmt" class="form-label">Total Amount </label>
+                                                            <input formControlName="PurchasedAmt" disabled type="text" class="input-text form-control" name="PurchasedAmt" id="PurchasedAmt" placeholder="Purchased Amt" value="{{ calculateActualPrice() }}" [(ngModel)]="SelPurchasedAmt"/>  
+                                                             
+                                                        </div>     
+                                                        <div class="col-4 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                            <label for="PaidAmount" class="form-label">Paid Amount </label>
+                                                            <input formControlName="PaidAmount" (change)="balanceAmount($event.target.value)"  type="number" class="input-text form-control" name="PaidAmount" id="PaidAmount" placeholder="Paid Amt" value="SelPaidAmt" [(ngModel)]="SelPaidAmt"/>  
+                                                             
+                                                        </div> 
+                                                        <div class="col-4 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                            <label for="BalanceAmount" class="form-label">Balance Amount </label>
+                                                            <input formControlName="BalanceAmount" disabled type="text" class="input-text form-control" name="BalanceAmount" id="BalanceAmount" placeholder="Balance Amt" value="SelBalanceAmt" [(ngModel)]="SelBalanceAmt"/>  
+                                                             
+                                                        </div>  
+                                                            </div>                                                           
+                                                            <div class="form-row place-order">
+                                                                <div class="col-md-4"></div>
+                                                                <div class="col-md-2"> <button type="submit" class="btn btn-primary">Submit</button></div>
+                                                                <div class = "col-md-2"><button type="button" (click)="Cancel()" class="btn btn-primary">Cancel</button></div>
+                                                                <div class="col-md-4"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                            </main>
+                            <!-- #main -->
+                        </div>
+                        <!-- #primary -->
+                    </div>
+                    <!-- .col-full -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

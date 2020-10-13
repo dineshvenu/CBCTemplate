@@ -1,0 +1,99 @@
+
+.mat-form-field-appearance-legacy .mat-form-field-label{
+    color: black;
+}
+mat-form-field {
+    font-size: 14px;
+    border: black;
+    border-color: black;
+    color: black;
+    font-size: larger;
+    /* width: 20%; */
+  }
+  input.mat-input-element{
+      border: black;
+      color: black;
+  }
+
+.mat-cell, .mat-footer-cell{
+    color: #050000 !important;
+    
+}
+.mat-header-cell{
+    color: #050000;
+    border-width : thin;
+    background-color: rgb(219 223 230);
+}
+.mat-header-row, .mat-footer-row
+{
+    background-color: rgb(219 223 230) !important;
+}
+.mat-header-row .cdk-header-row{
+    background-color:black;
+}
+.space-2, .space-top-2
+{
+padding-top: 1rem !important;
+}
+.space-1, .space-bottom-1
+{
+    padding-bottom:0rem !important;
+}
+.mb-2, .my-2
+{
+    margin-bottom:-0.5rem !important;
+}
+
+
+.mat-table {
+    border-radius: 11px;
+    font-style:#050000;
+    background-color:white !important;
+}
+.mat-table {
+    width: 100% !important;
+}
+.mat-header-cell, .mat-sort-header-sorted {
+    color: black !important;
+}
+.mat-row {
+    border-bottom: 0;
+}
+.mat-row:hover {
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, .1);
+}
+.subms-row {
+    border-bottom: 1px solid rgba(0, 0, 0, .1);
+    background-color: #fafafa;
+    min-height: 0;
+    overflow: hidden;
+}
+.majms-row:not(.expandedMs):hover {
+    background: #f5f5f5;
+}
+.majms-row:not(.expandedMs):active {
+    background: #efefef;
+}
+::ng-deep tr.mat-row, tr.mat-footer-row {
+    height: 48px;
+    background-color:white;
+  }
+  .mat-paginator
+  {
+    background: rgb(219 223 230) !important;
+  } 
+  .mat-paginator, .mat-paginator-page-size .mat-select-trigger
+  {
+      color: black !important;
+  }
+  ::ng-deep .mat-select-value
+  {
+    color: black !important;
+  }
+  .btn-dark{
+    background-color:rgb(112, 104, 104) !important;
+}
+td, th {
+    width: 20%;
+  }

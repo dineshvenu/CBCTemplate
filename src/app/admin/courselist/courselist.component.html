@@ -1,0 +1,56 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div class="site-content bg-punch-light overflow-hidden" id="content">
+                <div class="container">
+                    <header class="entry-header space-top-2 space-bottom-1 mb-2">
+                        <div class="row">
+                            <div class="col-md-2">
+                                <h1 class="entry-title font-size-4">Courses</h1>
+                            </div>
+                            <div class="col-md-2" style="width: 100%; margin-top: -18px;">
+                                <mat-form-field style="width: 80%;border-top: 0;">
+                                    <mat-label>
+                                        Search
+                                    </mat-label>
+                                    <input matInput style="background-color: rgb(148, 123, 148);height: 30px;" (keyup)="applyFilter($event)" placeholder="Ex. ium">
+                                </mat-form-field>
+                            </div>
+                            <div class="col-md-4">
+                                <button color="primary" mat-raised-button  class="btn-primary" style="margin-bottom: 19px;" (click)="createCourse()"> Creat Course</button>
+                            </div>
+                        </div>
+                    </header>
+                    <div class="jumbtron">
+                        <mat-table [dataSource]="dataSource" matSort>
+                            <ng-container matColumnDef="id" hidden="True">
+                                <mat-header-cell *matHeaderCellDef  mat-sort-header> ID. </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.id}} </mat-cell>
+                            </ng-container>
+                            <ng-container matColumnDef="courseName" hidden="true">
+                                <mat-header-cell *matHeaderCellDef  mat-sort-header> Course Name. </mat-header-cell>
+                                <mat-cell *matCellDef="let element"> {{element.courseName}} </mat-cell>
+                            </ng-container>               
+                            <ng-container matColumnDef="action">
+                                <th mat-header-cell *matHeaderCellDef> Action </th>
+                                <td mat-cell *matCellDef="let element" class="action-link"> 
+                                    <a class="btn"(click)="editCourse('Update',element)">Edit</a> | 
+                                    <button mat-button (click)="openDialog('Delete',element)">Delete</button>
+                                </td>
+                            </ng-container>
+                            <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                            <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                        </mat-table>
+                        <mat-paginator [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+                    </div>                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="services" id="services">
+    <div class="container">
+       
+    </div>
+</section>

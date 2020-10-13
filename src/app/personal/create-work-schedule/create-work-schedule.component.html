@@ -1,0 +1,85 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div id="Category"  data-target-group="idForm">
+                <div id="content" class="site-content bg-punch-light space-bottom-3">
+                    <div class="col-full container">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <article id="post-6" class="post-6 page type-page status-publish hentry">
+                                    <!-- .entry-header -->
+                                    <div class="entry-content">
+                                        <div class="woocommerce">                        
+                
+                                            <form [formGroup]="createWSForm" (submit)=onSubmit(createWSForm)>
+                                                <div class="" id="customer_details">
+                                                    <div class="px-4 pt-5 bg-white border">
+                                                        <div class="woocommerce-billing-fields">                
+                                                            <h3 class="mb-4 font-size-3">Work Schedule </h3>
+                
+                                                            <div class="woocommerce-billing-fields__field-wrapper row">
+                                                               
+                                                                <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">  
+                                                                    <input formControlName="ID" type="hidden" id="ID" name="ID">
+                                                                    <input formControlName="UserID" type="hidden" class="input-text form-control" name="UserID" id="UserID" placeholder="UserID" [(ngModel)]="UserID" /> 
+                                                                </p>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label  class="form-label">Employee Name</label>
+                                                                    <input  type="text" class="input-text form-control" name="UsrName" id="UsrName" placeholder="Name" disabled [(ngModel)]="UserName" [ngModelOptions]="{standalone: true}" value=""/>    
+                                                                 
+                                                                </div> 
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="WayBillNo" class="form-label">Date of Duty </label>
+                                                                    <mat-form-field   class="datpickerbackgrounf" color="accent" appearance="fill">
+                                                                        <mat-label > Date of Duty  </mat-label>
+                                                                        <input formControlName="DateOfDuty" [(ngModel)]="DODDate" matInput [matDatepicker]="DateOfDuty" >
+                                                                        <mat-datepicker-toggle matSuffix  [for]="DateOfDuty"  class="datpickerSelecter"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #DateOfDuty color="primary"></mat-datepicker>
+                                                                      </mat-form-field>  
+                                                                    </div>  
+                                                                   
+                                                                 
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="WayBillNo" class="form-label">Way Bill No </label>
+                                                                    <input formControlName="WayBillNo" type="text" class="input-text form-control" name="WayBillNo" id="WayBillNo" placeholder="Way Bill No" value=""/>    
+                                                                 
+                                                                </div>  
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="NatureofDuty" class="form-label">Nature Of Duty </label>
+                                                                    <input formControlName="NatureofDuty" type="text" class="input-text form-control" name="NatureofDuty" id="NatureofDuty" placeholder="Nature Of Duty" value=""/>    
+                                                                 
+                                                                </div>    
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="WeeklyOff" class="form-label">Weekly Off </label>
+                                                                    <input formControlName="WeeklyOff" type="text" class="input-text form-control" name="WeeklyOff" id="Weekly Off" placeholder="WeeklyOff" value=""/>    
+                                                                 
+                                                                </div>     
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="Remarks" class="form-label">Remarks </label>
+                                                                    <input formControlName="Remarks" type="text" class="input-text form-control" name="Remarks" id="Remarks" placeholder="Remarks" value=""/>    
+                                                                 
+                                                                </div>                                                    
+                                                            </div>
+                                                            <div class="form-row place-order">
+                                                                <input type="submit" class="button alt btn btn-dark btn-block rounded-0 py-4" name="woocommerce_checkout_place_order" id="place_order" value="submit" data-value="submit">
+                                                              </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                            </main>
+                            <!-- #main -->
+                        </div>
+                        <!-- #primary -->
+                    </div>
+                    <!-- .col-full -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

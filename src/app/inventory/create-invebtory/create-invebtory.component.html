@@ -1,0 +1,111 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div id="Category"  data-target-group="idForm">
+                <div id="content" class="site-content bg-punch-light space-bottom-3">
+                    <div class="col-full container">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <article id="post-6" class="post-6 page type-page status-publish hentry">
+                                    <!-- .entry-header -->
+                                    <div class="entry-content">
+                                        <div class="woocommerce">                        
+                
+                                            <form [formGroup]="createInventoryForm" (submit)=onSubmit(createInventoryForm)>
+                                                <div class="" id="customer_details">
+                                                    <div class="px-4 pt-5 bg-white border">
+                                                        <div class="woocommerce-billing-fields">                
+                                                            <h3 class="mb-4 font-size-3">Inventory </h3>
+                
+                                                            <div class="woocommerce-billing-fields__field-wrapper row">
+                                                               
+                                                                <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">  
+                                                                    <input formControlName="ID" type="hidden" id="ID" name="ID">
+                                                                </p>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="StockID" class="form-label">StockID <abbr class="required" title="required">*</abbr></label>
+                                                                    <select [ngClass]="{ 'is-invalid': submitted && f.StockID.errors }" class="form-control" formControlName="StockID" [(ngModel)]="SelstockId" (change)="GetInventoryByStockID(SelstockId);">
+                                                                    <option  value="">Select Stock</option>
+                                                                    <option *ngFor="let stock of StockList | async" value={{stock.ID}}>
+                                                                        {{stock.Name}}
+                                                                    </option>                                                                   
+                                                                </select>
+                                                                <div *ngIf="submitted && f.StockID.errors" class="invalid-feedback">
+                                                                    <div *ngIf="f.StockID.errors.required">Stock is required</div>
+                                                                </div>
+                                                                </div>
+                                                               
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="CurrentStock" class="form-label">CurrentStock <abbr class="required" title="required">*</abbr></label>
+                                                                    <input disabled="true" formControlName="CurrentStock" type="number" class="input-text form-control" name="CurrentStock" id="CurrentStock" placeholder="CurrentStock" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="UnitId" class="form-label">UnitId <abbr class="required" title="required">*</abbr></label>
+                                                                    <select  class="form-control" formControlName="UnitId" [(ngModel)]="SelUnitId">
+                                                                    <option  value="">Select Unit</option>
+                                                                    <option *ngFor="let Unit of UnitList | async" value={{Unit.ID}}>
+                                                                        {{Unit.Name}}
+                                                                    </option>                                                                   
+                                                                </select>
+                                                                
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="SupplierId" class="form-label">SupplierId <abbr class="required" title="required">*</abbr></label>
+                                                                    <select  class="form-control" formControlName="SupplierId" [(ngModel)]="SelSupplierId">
+                                                                    <option  value="">Select Supplier</option>
+                                                                    <option *ngFor="let Supplier of SupplierList | async" value={{Supplier.ID}}>
+                                                                        {{Supplier.Name}}
+                                                                    </option>                                                                   
+                                                                </select>                                                                
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="StockQty" class="form-label">StockQty <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="StockQty" [(ngModel)]="StockQtytxt" type="number" class="input-text form-control" name="StockQty" id="StockQty" placeholder="StockQty" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label  class="form-label">Price <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="IndividualAmt" [(ngModel)]="pricetxt" type="number" class="input-text form-control" name="IndividualAmt" id="IndividualAmt" placeholder="IndividualAmt" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="Discount" class="form-label">Discount <abbr class="required" title="required">*</abbr></label>
+                                                                    <input (change)="CalculateDiscount();" [(ngModel)]="Discounttxt" formControlName="Discount" type="number" class="input-text form-control" name="Discount" id="Discount" placeholder="Discount" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="PurchasedAmt" class="form-label">PurchasedAmt <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="PurchasedAmt" [(ngModel)]="PurchasedAmttxt" type="number" class="input-text form-control" name="PurchasedAmt" id="PurchasedAmt" placeholder="PurchasedAmt" value=""/>    
+                                                                   
+                                                                </div>
+                                                                
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="TotalAmount" class="form-label">TotalAmount <abbr class="required" title="required">*</abbr></label>
+                                                                    <input disabled="true" [(ngModel)]="TotalAmountxt" formControlName="TotalAmount" type="number" class="input-text form-control" name="TotalAmount" id="TotalAmount" placeholder="TotalAmount" value=""/>    
+                                                                   
+                                                                </div>
+                                                            </div>
+                                                            <div class="form-row place-order">
+                                                                <input type="submit" class="button alt btn btn-dark btn-block rounded-0 py-4" name="woocommerce_checkout_place_order" id="place_order" value="submit" data-value="submit">
+                                                              </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                            </main>
+                            <!-- #main -->
+                        </div>
+                        <!-- #primary -->
+                    </div>
+                    <!-- .col-full -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

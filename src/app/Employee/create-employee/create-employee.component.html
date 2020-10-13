@@ -1,0 +1,101 @@
+   <!-- Signup -->
+   <div id="signup"  data-target-group="idForm">
+    <!-- Title -->
+    <header class="border-bottom px-4 px-md-6 py-4">
+        <button class="close" mat-button mat-dialog-title  [mat-dialog-close]="true"> <mat-icon>close</mat-icon></button>
+        <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-resume mr-3 font-size-5"></i>Create Account</h2>
+    </header>
+    <!-- End Title -->
+    <form [formGroup]="createUserForm" (submit)=onSubmit(createUserForm)>
+    <div class="p-4 p-md-6">
+        <!-- Form Group -->
+
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="FirstName" [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }">First Name *</label>
+                <input class="form-control rounded-0 height-4 px-4" formControlName="FirstName" name="fname" placeholder="First Name" [ngClass]="{ 'is-invalid': submitted && f.FirstName.errors }"  aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.FirstName.errors" class="invalid-feedback">
+                    <div *ngIf="f.FirstName.errors.required">First Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="LastName">Last Name *</label>
+                <input class="form-control rounded-0 height-4 px-4" formControlName="LastName" [ngClass]="{ 'is-invalid': submitted && f.LastName.errors }" name="LastName" id="LastName" placeholder="Last Name" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.LastName.errors" class="invalid-feedback">
+                    <div *ngIf="f.LastName.errors.required">Last Name is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="Gender">Gender *</label>
+                <input class="form-control rounded-0 height-4 px-4" formControlName="Gender" [ngClass]="{ 'is-invalid': submitted && f.Gender.errors }" name="Gender" id="Gender" placeholder="Gender" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.Gender.errors" class="invalid-feedback">
+                    <div *ngIf="f.Gender.errors.required">Gender is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="MobileNo">Phone No *</label>
+                <input class="form-control rounded-0 height-4 px-4" name="MobileNo" formControlName="MobileNo" [ngClass]="{ 'is-invalid': submitted && f.MobileNo.errors }" id="MobileNo" placeholder="Phone No" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.MobileNo.errors" class="invalid-feedback">
+                    <div *ngIf="f.MobileNo.errors.required">Mobile No is required</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="EmailId">Email *</label>
+                <input class="form-control rounded-0 height-4 px-4" name="EmailId" formControlName="EmailId" [ngClass]="{ 'is-invalid': submitted && f.EmailId.errors }"  id="EmailId" placeholder="EmailId" aria-label="creativelayers088@gmail.com" aria-describedby="signinEmailLabel1">
+                <div *ngIf="submitted && f.EmailId.errors" class="invalid-feedback">
+                    <div *ngIf="f.EmailId.errors.email">Email must be a valid email address</div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Group -->
+
+        <!-- Form Group -->
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label  class="form-label" for="Password">Password *</label>
+                <input type="password" class="form-control rounded-0 height-4 px-4" formControlName="Password" [ngClass]="{ 'is-invalid': submitted && f.Password.errors }"  name="Password" id="Password" placeholder="" aria-label="" aria-describedby="signinPasswordLabel1">
+                <div *ngIf="submitted && f.Password.errors" class="invalid-feedback">
+                    <div *ngIf="f.Password.errors.required">Password is required</div>
+                    <div *ngIf="f.Password.errors.minlength">Password must be at least 6 characters</div>
+                </div>
+            </div>
+        </div>
+        <!-- End Form Group -->
+
+        <!-- Form Group -->
+        <div class="form-group mb-4">
+            <div class="js-form-message js-focus-state">
+                <label class="form-label" for="confirmPassword">Confirm Password *</label>
+                <input type="password" class="form-control rounded-0 height-4 px-4" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" name="Password" formControlName="confirmPassword" id="signupConfirmPassword" placeholder="" aria-label="" aria-describedby="signupConfirmPasswordLabel">
+                <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmPassword.errors.required">Confirm Password is required</div>
+                    <div *ngIf="f.confirmPassword.errors.mustMatch">Passwords must match</div>
+                </div>
+            </div>
+        </div>
+        <!-- End Input -->
+
+        <div class="mb-3">
+            <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Create Account</button>
+        </div>
+
+        <div class="text-center mb-4">
+            <span class="small text-muted">Already have an account?</span>
+            <a class="js-animation-link small" href="javascript:;"
+                data-target="#login"
+                data-link-group="idForm"
+                data-animation-in="fadeIn" (click)=close()>Login
+            </a>
+        </div>
+    </div>
+    </form>
+</div>
+<!-- End Signup -->

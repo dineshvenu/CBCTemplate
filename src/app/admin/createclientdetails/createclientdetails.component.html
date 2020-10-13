@@ -1,0 +1,108 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div id="Category"  data-target-group="idForm">
+                <div id="content" class="site-content bg-punch-light space-bottom-3">
+                    <div class="col-full container">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <article id="post-6" class="post-6 page type-page status-publish hentry">
+                                    <!-- .entry-header -->
+                                    <div class="entry-content">
+                                        <div class="woocommerce">                        
+                
+                                            <form [formGroup]="createClientDetailsForm" (submit)=onSubmit(createClientDetailsForm)>
+                                                <div class="" id="customer_details">
+                                                    <div class="px-4 pt-5 bg-white border">
+                                                        <div class="woocommerce-billing-fields">                
+                                                            <h3 class="mb-4 font-size-3">Client Details </h3>
+                
+                                                            <div class="woocommerce-billing-fields__field-wrapper row">
+                                                               
+                                                                <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">  
+                                                                    <input formControlName="ID" type="hidden" id="ID" name="ID">
+                                                                </p>
+                                                             
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ClientCode" class="form-label">Client Code </label>
+                                                                    <input formControlName="ClientCode"  type="text" class="input-text form-control" name="ClientCode" id="ClientCode" placeholder="Client Code" value=""/>    
+                                                                    
+                                                                </div>  
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ClientName" class="form-label">Client Name <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="ClientName" [ngClass]="{ 'is-invalid': submitted && f.ClientName.errors }" type="text" class="input-text form-control" name="ClientName" id="ClientName" placeholder="Client Name" value=""/>    
+                                                                    <div *ngIf="submitted && f.ClientName.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.ClientName.errors.required">Client Name is required</div>
+                                                                    </div>
+                                                                </div>   
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ClientCategory" class="form-label">Client Category <abbr class="required" title="required">*</abbr></label>
+                                                                    <select [ngClass]="{ 'is-invalid': submitted && f.ClientCategory.errors }" class="form-control" formControlName="ClientCategory" [(ngModel)]="ClientCategory">
+                                                                    <option  value="">Select Client Category</option>
+                                                                    <option *ngFor="let category of categoryList | async" value={{category.clientCategoryID}}>
+                                                                        {{category.clientCategory}}
+                                                                    </option>                                                                   
+                                                                </select>
+                                                                <div *ngIf="submitted && f.ClientCategory.errors" class="invalid-feedback">
+                                                                    <div *ngIf="f.ClientCategory.errors.required">categoryId is required</div>
+                                                                </div>
+                                                                </div>
+                                                       
+
+                                                                <div  (click)="clickUser($event)" class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ClientContactPerson" class="form-label">Client Contact Person <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="ClientContactPerson" type="hidden" id="ClientContactPerson" name="ClientContactPerson">
+                                                                    <input disabled formControlName="ClientContactPersonName" [ngClass]="{ 'is-invalid': submitted && f.ClientContactPersonName.errors }" type="text" class="input-text form-control" name="ClientContactPersonName" id="ClientContactPerson" placeholder="Click here for select Client Contact Person" value=""/>    
+                                                                    <div *ngIf="submitted && f.ClientContactPersonName.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.ClientContactPersonName.errors.required">ClientContactPerson is required</div>
+                                                                    </div>
+                                                                </div>  
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ClientContactNo" class="form-label">Client Contact No <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="ClientContactNo" [ngClass]="{ 'is-invalid': submitted && f.ClientContactNo.errors }" type="text" class="input-text form-control" name="ClientContactNo" id="ClientContactNo" placeholder="ClientContactNo" value=""/>    
+                                                                    <div *ngIf="submitted && f.ClientContactNo.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.ClientContactNo.errors.required">Client Contact No is required</div>
+                                                                    </div>
+                                                                </div>   
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ClientEmailID" class="form-label">Client Email ID <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="ClientEmailID" [ngClass]="{ 'is-invalid': submitted && f.ClientEmailID.errors }" type="text" class="input-text form-control" name="ClientEmailID" id="ClientEmailID" placeholder="ClientEmailID" value=""/>    
+                                                                    <div *ngIf="submitted && f.ClientEmailID.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.ClientEmailID.errors.required">Client Email ID is required</div>
+                                                                    </div>
+                                                                </div>    
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="clientAddess" class="form-label">Client Addess <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="clientAddess" [ngClass]="{ 'is-invalid': submitted && f.clientAddess.errors }" type="text" class="input-text form-control" name="clientAddess" id="clientAddess" placeholder="Client Addess" value=""/>    
+                                                                    <div *ngIf="submitted && f.clientAddess.errors" class="invalid-feedback">
+                                                                        <div *ngIf="f.clientAddess.errors.required">Client Addess is required</div>
+                                                                    </div>
+                                                                </div>   
+                                                                                                                
+                                                            </div>
+                                                            <div class="form-row place-order">
+                                                                <div class="col-md-4"></div>
+                                                                <div class="col-md-2"> <button type="submit" class="btn btn-primary">Submit</button></div>
+                                                                <div class = "col-md-2"><button type="button" (click)="Cancel()" class="btn btn-primary">Cancel</button></div>
+                                                                <div class="col-md-4"></div>
+                                                              </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                            </main>
+                            <!-- #main -->
+                        </div>
+                        <!-- #primary -->
+                    </div>
+                    <!-- .col-full -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

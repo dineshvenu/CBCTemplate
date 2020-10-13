@@ -1,0 +1,179 @@
+<section class="mb-8">
+    <div class="container">
+        <div class="pt-5 pb-5">
+            <div id="Category"  data-target-group="idForm">
+                <div id="content" class="site-content bg-punch-light space-bottom-3">
+                    <div class="col-full container">
+                        <div id="primary" class="content-area">
+                            <main id="main" class="site-main">
+                                <article id="post-6" class="post-6 page type-page status-publish hentry">
+                                    <!-- .entry-header -->
+                                    <div class="entry-content">
+                                        <div class="woocommerce">                        
+                
+                                            <form [formGroup]="createSalesForm" (submit)=onSubmit(createSalesForm)>
+                                                <div class="" id="customer_details">
+                                                    <div class="px-4 pt-5 bg-white border">
+                                                        <div class="woocommerce-billing-fields">                
+                                                            <h3 class="mb-4 font-size-3">Sales </h3>
+                
+                                                            <div class="woocommerce-billing-fields__field-wrapper row">
+                                                               
+                                                                <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">  
+                                                                    <input formControlName="ID" type="hidden" id="ID" name="ID">
+                                                                </p>
+                                                               
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="InvoiceNo" class="form-label">Invoice No <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="InvoiceNo" disabled type="text" class="input-text form-control" name="InvoiceNo" id="InvoiceNo" placeholder="Invoice No" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="CustomerName" class="form-label">Customer Name <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="CustomerName"  type="text" class="input-text form-control" name="CustomerName" id="CustomerName" placeholder="Customer Name" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ContactNo" class="form-label">Contact No <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="ContactNo"  type="text" class="input-text form-control" name="ContactNo" id="ContactNo" placeholder="Contact No" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ContactAddress" class="form-label">Contact Address <abbr class="required" title="required">*</abbr></label>
+                                                                    <input formControlName="ContactAddress"  type="text" class="input-text form-control" name="ContactAddress" id="ContactAddress" placeholder="Contact Address" value=""/>    
+                                                                   
+                                                                </div>
+                                                                <div class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                                    <label for="ContactAddress" class="form-label">Invoice Date <abbr class="required" title="required">*</abbr></label>
+                                                                    <mat-form-field  class="datpickerbackgrounf" color="accent" appearance="fill">
+                                                                        <mat-label >Invoice Date</mat-label>
+                                                                        <input formControlName="InvoiceDate"  matInput [matDatepicker]="picker2">
+                                                                        <mat-datepicker-toggle matSuffix  [for]="picker2"  class="datpickerSelecter"></mat-datepicker-toggle>
+                                                                        <mat-datepicker #picker2 color="primary"></mat-datepicker>
+                                                                      </mat-form-field>  
+                                                                    </div>        
+                                                                    
+                                                                    <div  class="col-12 mb-3 form-row form-row-wide address-field validate-required">
+                                                                        <ng-container formArrayName="salesDetailModels" >
+                                                           
+                                                            <div class="example-container mat-elevation-z8" style="width: 100%;">
+
+                                                            <mat-table #table [dataSource]="dataSource" style="width: 100%;">
+                                                                <ng-container matColumnDef="Stock">
+                                                                    <mat-header-cell *matHeaderCellDef> Stock </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                                                                        <input type="text"
+                                                                        (change)="addElement()"
+                                                                        (input)="itemClassOnChange($event.target.value)"
+                                                                        placeholder="Pick one"
+                                                                        aria-label="Number"
+                                                                        matInput
+                                                                        formControlName="Stock"
+                                                                        [matAutocomplete]="auto">
+                                                                 <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete" [displayWith]="displayFn" (optionSelected)="onStockOptionSelected($event,index)">
+                                                                   <mat-option  *ngFor="let stock of StockList | async" [value]="stock">
+                                                                    {{stock.Name}}
+                                                                   </mat-option>
+                                                                 </mat-autocomplete>
+                                                                 
+                                                                    </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="ItemPrice">
+                                                                <mat-header-cell *matHeaderCellDef> ItemPrice </mat-header-cell>
+                                                                <mat-cell *matCellDef="let element let index = index" [formGroupName]="index"> {{element.ItemPrice}} </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="TotalQty">
+                                                                    <mat-header-cell *matHeaderCellDef> TotalQty </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element let index = index" [formGroupName]="index"> {{element.TotalQty}} </mat-cell>
+                                                                    </ng-container>
+                                                                <ng-container matColumnDef="Quantity">
+                                                                    <mat-header-cell *matHeaderCellDef> Quantity </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                                                                        <mat-form-field floatLabel="never">
+                                                                            <input (keydown.enter)="onKeydown($event)"  (change)="QuantityValueChanged(index)" matInput placeholder="Quantity" [value]="element.Quantity" formControlName="Quantity">
+                                                                        </mat-form-field>                                                                       
+                                                                    </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="Price">
+                                                                <mat-header-cell *matHeaderCellDef> Price </mat-header-cell>
+                                                                <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.Price}} </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="StockID">
+                                                                    <mat-header-cell *matHeaderCellDef> StockID </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.StockID}} </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="SalesDetailID">
+                                                                    <mat-header-cell *matHeaderCellDef> SalesDetailID </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.SalesDetailID}} </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="Discount">
+                                                                    <mat-header-cell *matHeaderCellDef> Discount </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index">
+                                                                        <mat-form-field floatLabel="never">
+                                                                            <input  (change)="DiscountValueChanged(index)" matInput placeholder="Discount" [value]="element.Discount" formControlName="Discount">
+                                                                        </mat-form-field>                                                                       
+                                                                    </mat-cell>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="SalesdAmt">
+                                                                    <mat-header-cell *matHeaderCellDef> SalesdAmt </mat-header-cell>
+                                                                    <mat-cell *matCellDef="let element; let index = index" [formGroupName]="index"> {{element.SalesdAmt}} </mat-cell>
+                                                                </ng-container>
+                                                                    
+                                                                <ng-container matColumnDef="Add">
+                                                                    <th mat-header-cell *matHeaderCellDef> Add </th>
+                                                                    <td mat-cell *matCellDef="let element"> <button mat-raised-button color="primary" type="button" (click)="addElement()">Add</button> </td>
+                                                                </ng-container>
+                                                                <ng-container matColumnDef="Delete">
+                                                                    <th mat-header-cell *matHeaderCellDef> Delete </th>
+                                                                    <td mat-cell *matCellDef="let element ; let index = index"> <button mat-raised-button color="primary" (click)="deleteElement(index)">Delete</button> </td>
+                                                                </ng-container>
+
+                                                                <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+                                                                <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+                                                            </mat-table>
+                                                            </div>
+                                                        </ng-container>
+                                                        </div>
+                                                        
+                                                        <div class="col-4 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                            <label for="TotalAmount" class="form-label">Total Amount </label>
+                                                            <input formControlName="TotalAmount" disabled type="text" class="input-text form-control" name="TotalAmount" id="TotalAmount" placeholder="Purchased Amt" value="{{ calculateActualPrice() }}" [(ngModel)]="SelSalesAmt"/>  
+                                                             
+                                                        </div>     
+                                                        <div class="col-4 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                            <label for="PaidAmount" class="form-label">Paid Amount </label>
+                                                            <input formControlName="PaidAmount" (change)="balanceAmount($event.target.value)"  type="number" class="input-text form-control" name="PaidAmount" id="PaidAmount" placeholder="Paid Amt" value="SelPaidAmt" [(ngModel)]="SelPaidAmt"/>  
+                                                             
+                                                        </div> 
+                                                        <div class="col-4 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
+                                                            <label for="BalanceAmt" class="form-label">Balance Amount </label>
+                                                            <input formControlName="BalanceAmt" disabled type="text" class="input-text form-control" name="BalanceAmt" id="BalanceAmt" placeholder="Balance Amt" value="SelBalanceAmt" [(ngModel)]="SelBalanceAmt"/>  
+                                                             
+                                                        </div>  
+                                                            </div>
+                                                            <div class="form-row place-order">
+                                                                <div class="col-md-4"></div>
+                                                                <div class="col-md-2"> <button type="submit" class="btn btn-primary">Submit</button></div>
+                                                                <div class = "col-md-2"><button type="button" (click)="Cancel()" class="btn btn-primary">Cancel</button></div>
+                                                                <div class="col-md-4"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <!-- .entry-content -->
+                                </article>
+                                <!-- #post-## -->
+                            </main>
+                            <!-- #main -->
+                        </div>
+                        <!-- #primary -->
+                    </div>
+                    <!-- .col-full -->
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
