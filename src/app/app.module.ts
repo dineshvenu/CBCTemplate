@@ -50,8 +50,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ConfirmationDialogComponent
   ],
   providers: [
-    {
-      
+    {      
       provide:HTTP_INTERCEPTORS,
       useClass:AuthInterceptor,
       multi:true

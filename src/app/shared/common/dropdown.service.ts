@@ -18,7 +18,7 @@ export class DropdownService {
   }
   getSubCategoryDetails(ID):Observable<any>
   {
-    return this.http.get<Dropdown>(this.rootURL+'/Dropdown/SubCategoryDropdown?ID='+ID);
+    return this.http.get<Dropdown>(this.rootURL+'/Dropdown/SubCategoryDropdown?chat='+ID);
   }
   getAutherDetails():Observable<any>
   {
